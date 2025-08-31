@@ -1,0 +1,31 @@
+CREATE DATABASE EscolaDB;
+USE EscolaDB;
+
+DROP TABLE Matricula;
+DROP TABLE Curso;
+DROP TABLE Aluno;
+
+CREATE TABLE Aluno(
+    IdAluno INT PRIMARY KEY IDENTITY(1,1),
+    Nome NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) NOT NULL,
+    DataNascimento datetime2(7) NULL
+);
+
+CREATE TABLE Curso(
+    IdCurso INT PRIMARY KEY IDENTITY(1,1),
+    NomeCurso NVARCHAR(100) NULL
+);
+
+CREATE TABLE Matricula(
+    IdMatricula INT PRIMARY KEY IDENTITY(1,1),
+    IdAluno INT,
+    FOREIGN KEY (IdAluno) REFERENCES Aluno(IdAluno),
+    IdCurso INT,
+    FOREIGN KEY (IdCurso) REFERENCES Curso(IdCurso),
+    DataMatricula datetime2(7) NULL
+);
+
+SELECT * FROM Aluno
+SELECT * FROM Curso
+SELECT * FROM Matricula
